@@ -1,7 +1,6 @@
 package com.example.TaskManager;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,6 +35,7 @@ public class TaskController {
 
         // Access the user's email
         teammate = oauthToken.getPrincipal().getAttribute("email");
+        System.out.println(teammate);
     
         // Use the email as needed
         }
@@ -61,6 +61,7 @@ public class TaskController {
         OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
 
         creator = oauthToken.getPrincipal().getAttribute("email");
+        System.out.println(creator);
     
         task.setCreator(creator);
         }
