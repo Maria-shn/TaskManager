@@ -38,10 +38,7 @@ public class TaskController {
         teammate = oauthToken.getPrincipal().getAttribute("email");
     
         // Use the email as needed
-        System.out.println("User's email: " + teammate);
         }
-
-        System.out.println(teammate);
         List<Task> list1 = taskRepository.findByTeammate1(teammate);
         List<Task> list2 = taskRepository.findByTeammate2(teammate);
         List<Task> list3 = taskRepository.findByTeammate3(teammate);
@@ -55,7 +52,7 @@ public class TaskController {
 
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public Task saveTask(@RequestBody Task task){
         String creator = "";
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -63,21 +60,29 @@ public class TaskController {
         if (authentication instanceof OAuth2AuthenticationToken) {
         OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
 
-        // Access the user's email
         creator = oauthToken.getPrincipal().getAttribute("email");
     
-        // Use the email as needed
-        System.out.println("User's email: " + creator);
         task.setCreator(creator);
         }
         return taskRepository.save(task);
     }
 
-    @DeleteMapping()
+    @DeleteMapping("/delete")
     public void deleteTask(@RequestParam(name = "id") String id){
+        //TODO make sure they can only delete tasks they are the creator of.
+        /*String creator = "";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (authentication instanceof OAuth2AuthenticationToken) {
+        OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
+
+        creator = oauthToken.getPrincipal().getAttribute("email");
+        }
+        System.out.println(creator);
         Optional<Task> optionalTaskToDelete = taskRepository.findById(id);
-        Task taskToDelete = optionalTaskToDelete.get();
-        taskRepository.delete(taskToDelete);
+        Task taskToDelete = optionalTaskToDelete.get();*/
+        taskRepository.deleteById(id);
+        
         
     }
 
