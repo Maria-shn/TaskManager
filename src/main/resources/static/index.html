@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+<h1>Task Manager</h1>
+
+<table id="taskTable">
+    <tr>
+        <th>ID</th>
+        <th>Creator</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Teammate 1</th>
+        <th>Teammate 2</th>
+        <th>Teammate 3</th>
+    </tr>
+</table>
+
+<form id="taskForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="teammate1">Teammate 1:</label>
+    <input type="text" id="teammate1" name="teammate1">
+
+    <label for="teammate2">Teammate 2:</label>
+    <input type="text" id="teammate2" name="teammate2">
+
+    <label for="teammate3">Teammate 3:</label>
+    <input type="text" id="teammate3" name="teammate3">
+
+    <button type="button" onclick="saveTask()">Save Task</button>
+</form>
+
+<form id="deleteForm">
+    <label for="taskId">Task ID to Delete:</label>
+    <input type="text" id="taskId" name="taskId" required>
+
+    <button type="button" onclick="deleteTask()">Delete Task</button>
+</form>
+
+<script src="script.js"></script>
+
+</body>
+</html>
