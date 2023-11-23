@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/target/TaskManager-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar target/TaskManager-0.0.1-SNAPSHOT.jar
