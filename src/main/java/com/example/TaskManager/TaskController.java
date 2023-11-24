@@ -33,11 +33,11 @@ public class TaskController {
         if (authentication instanceof OAuth2AuthenticationToken) {
         OAuth2AuthenticationToken oauthToken = (OAuth2AuthenticationToken) authentication;
 
-        // Access the user's email
+
         teammate = oauthToken.getPrincipal().getAttribute("email");
         System.out.println(teammate);
     
-        // Use the email as needed
+        
         }
         List<Task> list1 = taskRepository.findByTeammate1(teammate);
         List<Task> list2 = taskRepository.findByTeammate2(teammate);
